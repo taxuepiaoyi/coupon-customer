@@ -90,7 +90,7 @@
             </dependency>
             <dependency>
                 <groupId>com.bruce</groupId>
-                <artifactId>coupon-template</artifactId>
+                <artifactId>template-service-api</artifactId>
                 <version>1.0-SNAPSHOT</version>
             </dependency>
         </dependencies>
