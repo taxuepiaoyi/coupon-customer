@@ -7,6 +7,7 @@
     <modules>
         <module>customer-api</module>
         <module>customer-core</module>
+        <module>customer-test</module>
     </modules>
 
     <parent>
