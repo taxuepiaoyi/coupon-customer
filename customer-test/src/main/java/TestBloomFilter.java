@@ -9,8 +9,8 @@ import com.google.common.hash.Funnels;
 public class TestBloomFilter {
 
     private static int total = 1000000;
-    private static BloomFilter<Integer> bf = BloomFilter.create(Funnels.integerFunnel(), total);
-//    private static BloomFilter<Integer> bf = BloomFilter.create(Funnels.integerFunnel(), total, 0.001);
+    //private static BloomFilter<Integer> bf = BloomFilter.create(Funnels.integerFunnel(), total);
+    private static BloomFilter<Integer> bf = BloomFilter.create(Funnels.integerFunnel(), total, 0.001);
 
     public static void main(String[] args) {
         // 初始化1000000条数据到过滤器中
