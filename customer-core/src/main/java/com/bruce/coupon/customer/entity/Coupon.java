@@ -2,6 +2,7 @@ package com.bruce.coupon.customer.entity;
 
 import com.bruce.coupon.customer.converter.CouponStatusConverter;
 import com.bruce.coupon.customer.enums.CouponStatus;
+import com.bruce.coupon.template.domain.CouponTemplateInfo;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -48,4 +49,8 @@ public class Coupon {
     @CreatedDate
     @Column(name = "created_time", nullable = false)
     private Date createdTime;
+
+    // 被Transient标记的属性是不会被持久化的
+    @Transient
+    private CouponTemplateInfo templateInfo;
 }

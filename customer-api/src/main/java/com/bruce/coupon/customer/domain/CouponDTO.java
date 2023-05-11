@@ -3,12 +3,14 @@ package com.bruce.coupon.customer.domain;
 import com.bruce.coupon.customer.enums.CouponStatus;
 import com.bruce.coupon.template.domain.CouponTemplateInfo;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.Date;
 
 @Data
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class CouponDTO {
