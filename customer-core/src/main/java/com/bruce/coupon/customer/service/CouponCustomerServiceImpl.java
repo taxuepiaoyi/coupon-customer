@@ -7,6 +7,7 @@ import com.bruce.coupon.customer.domain.RequestCoupon;
 import com.bruce.coupon.customer.domain.SearchCoupon;
 import com.bruce.coupon.customer.entity.Coupon;
 import com.bruce.coupon.customer.enums.CouponStatus;
+import com.bruce.coupon.customer.feign.CalculationService;
 import com.bruce.coupon.template.domain.CouponInfo;
 import com.bruce.coupon.template.domain.CouponTemplateInfo;
 import lombok.extern.slf4j.Slf4j;
@@ -30,6 +31,10 @@ public class CouponCustomerServiceImpl implements CouponCustomerService {
 
     @Autowired
     private WebClient.Builder webClientBuilder;
+
+    @Autowired
+    private CalculationService calculationService ;
+
 
     @Override
     public CouponDTO requestCoupon(RequestCoupon request) {
