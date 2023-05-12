@@ -21,6 +21,10 @@
             <artifactId>template-service-api</artifactId>
         </dependency>
         <dependency>
+            <groupId>com.bruce</groupId>
+            <artifactId>calculation-api</artifactId>
+        </dependency>
+        <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
         </dependency>

@@ -1,5 +1,8 @@
 package com.bruce.coupon.customer.service;
 
+import com.bruce.coupon.calculation.domain.ShoppingCart;
+import com.bruce.coupon.calculation.domain.SimulationOrder;
+import com.bruce.coupon.calculation.domain.SimulationResponse;
 import com.bruce.coupon.customer.domain.CouponDTO;
 import com.bruce.coupon.customer.domain.RequestCoupon;
 import com.bruce.coupon.customer.domain.SearchCoupon;
@@ -12,6 +15,12 @@ public interface CouponCustomerService {
     CouponDTO requestCoupon(RequestCoupon request);
 
     void deleteCoupon(Long userId, Long couponId);
+
+    // 核销优惠券
+    ShoppingCart placeOrder(ShoppingCart info);
+
+    // 优惠券金额试算
+    SimulationResponse simulateOrderPrice(SimulationOrder order);
 
     // 查询用户优惠券
     List<CouponInfo> findCoupon(SearchCoupon request);

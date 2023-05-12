@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.util.Collection;
 import java.util.Map;
 
-@FeignClient(value = "coupon-template",name = "coupon-template-fegin" ,path = "/template", fallback = TemplateServiceFallback.class)
+@FeignClient(value = "coupon-template" ,path = "/template", fallback = TemplateServiceFallback.class)
 public interface TemplateService {
 
     // 读取优惠券
