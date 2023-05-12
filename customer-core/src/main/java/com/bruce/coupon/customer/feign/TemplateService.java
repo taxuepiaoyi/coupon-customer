@@ -1,6 +1,6 @@
 package com.bruce.coupon.customer.feign;
 
-import com.bruce.coupon.customer.feign.fallback.TemplateServiceFallbackFactory;
+import com.bruce.coupon.customer.feign.fallback.TemplateServiceFallback;
 import com.bruce.coupon.template.domain.CouponTemplateInfo;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,9 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.util.Collection;
 import java.util.Map;
 
-@FeignClient(value = "coupon-template", path = "/template",
-//        fallback = TemplateServiceFallback.class,
-        fallbackFactory = TemplateServiceFallbackFactory.class)
+@FeignClient(value = "coupon-template",name = "coupon-template-fegin" ,path = "/template", fallback = TemplateServiceFallback.class)
 public interface TemplateService {
 
     // 读取优惠券
