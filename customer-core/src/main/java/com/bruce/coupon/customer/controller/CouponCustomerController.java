@@ -30,8 +30,9 @@ public class CouponCustomerController {
     private CouponCustomerService customerService;
 
     @PostMapping("requestCoupon")
+    @ResponseBody
     public CouponDTO requestCoupon(@Valid @RequestBody RequestCoupon request) {
-        if(!disableCoupon){
+        if(disableCoupon){
             log.info("暂停优惠券活动");
             return null ;
         }
