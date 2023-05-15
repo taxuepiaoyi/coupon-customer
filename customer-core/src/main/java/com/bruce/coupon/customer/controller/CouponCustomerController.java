@@ -1,5 +1,6 @@
 package com.bruce.coupon.customer.controller;
 
+import com.alibaba.csp.sentinel.annotation.SentinelResource;
 import com.bruce.coupon.calculation.domain.ShoppingCart;
 import com.bruce.coupon.calculation.domain.SimulationOrder;
 import com.bruce.coupon.calculation.domain.SimulationResponse;
@@ -30,6 +31,7 @@ public class CouponCustomerController {
     private CouponCustomerService customerService;
 
     @PostMapping("requestCoupon")
+    @SentinelResource(value =  "requestCoupon")
     @ResponseBody
     public CouponDTO requestCoupon(@Valid @RequestBody RequestCoupon request) {
         if(disableCoupon){
@@ -61,6 +63,7 @@ public class CouponCustomerController {
 
     // 实现的时候最好封装一个search object类
     @PostMapping("findCoupon")
+    @SentinelResource(value = "findCoupon")
     public List<CouponInfo> findCoupon(@Valid @RequestBody SearchCoupon request) {
         return customerService.findCoupon(request);
     }

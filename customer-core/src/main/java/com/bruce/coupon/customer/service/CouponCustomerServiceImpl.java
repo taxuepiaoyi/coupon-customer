@@ -14,6 +14,7 @@ import com.bruce.coupon.customer.feign.CalculationService;
 import com.bruce.coupon.customer.feign.TemplateService;
 import com.bruce.coupon.template.domain.CouponInfo;
 import com.bruce.coupon.template.domain.CouponTemplateInfo;
+import com.bruce.coupon.template.rule.TemplateRule;
 import com.google.common.collect.Lists;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.BooleanUtils;
@@ -54,9 +55,16 @@ public class CouponCustomerServiceImpl implements CouponCustomerService {
             throw new IllegalArgumentException("Invalid template id");
         }
 
+        // 模板不存在则报错
+        TemplateRule templateRule = templateInfo.getRule() ;
+        if (templateRule == null) {
+            log.error("invalid template rule id={}", request.getCouponTemplateId());
+            throw new IllegalArgumentException("Invalid template rule id");
+        }
+
         // 模板不能过期
         long now = Calendar.getInstance().getTimeInMillis();
-        Long expTime = templateInfo.getRule().getDeadline();
+        Long expTime = templateRule.getDeadline();
         if (expTime != null && now >= expTime || BooleanUtils.isFalse(templateInfo.getAvailable())) {
             log.error("template is not available id={}", request.getCouponTemplateId());
             throw new IllegalArgumentException("template is unavailable");
