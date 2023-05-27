@@ -7,6 +7,7 @@ import com.bruce.coupon.calculation.domain.SimulationResponse;
 import com.bruce.coupon.customer.domain.CouponDTO;
 import com.bruce.coupon.customer.domain.RequestCoupon;
 import com.bruce.coupon.customer.domain.SearchCoupon;
+import com.bruce.coupon.customer.producer.CouponProducer;
 import com.bruce.coupon.customer.service.CouponCustomerService;
 import com.bruce.coupon.template.domain.CouponInfo;
 import lombok.extern.slf4j.Slf4j;
@@ -29,6 +30,9 @@ public class CouponCustomerController {
 
     @Autowired
     private CouponCustomerService customerService;
+
+    @Autowired
+    private CouponProducer couponProducer ;
 
     @PostMapping("requestCoupon")
     @SentinelResource(value =  "requestCoupon")
@@ -66,6 +70,20 @@ public class CouponCustomerController {
     @SentinelResource(value = "findCoupon")
     public List<CouponInfo> findCoupon(@Valid @RequestBody SearchCoupon request) {
         return customerService.findCoupon(request);
+    }
+
+
+
+    @PostMapping("requestCouponEvent")
+    public void requestCouponEvent(@Valid @RequestBody RequestCoupon request) {
+        couponProducer.sendCoupon(request);
+    }
+
+    // 用户删除优惠券
+    @DeleteMapping("deleteCouponEvent")
+    public void deleteCouponEvent(@RequestParam("userId") Long userId,
+                                  @RequestParam("couponId") Long couponId) {
+        couponProducer.deleteCoupon(userId, couponId);
     }
 
 }
