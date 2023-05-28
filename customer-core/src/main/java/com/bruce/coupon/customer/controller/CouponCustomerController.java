@@ -82,6 +82,17 @@ public class CouponCustomerController {
         return couponProducer.sendCoupon(request);
     }
 
+
+    /**
+     * 延时创建优惠券
+     * @param request
+     * @return
+     */
+    @PostMapping("requestDelayCouponEvent")
+    public Boolean requestDelayCouponEvent(@Valid @RequestBody RequestCoupon request) {
+        return couponProducer.sendDelayCoupon(request);
+    }
+
     // 用户删除优惠券
     @DeleteMapping("deleteCouponEvent")
     public Boolean deleteCouponEvent(@RequestParam("userId") Long userId,
