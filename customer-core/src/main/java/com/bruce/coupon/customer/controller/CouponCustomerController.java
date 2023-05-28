@@ -72,18 +72,21 @@ public class CouponCustomerController {
         return customerService.findCoupon(request);
     }
 
-
-
+    /**
+     * 用户创建优惠券
+     * @param request
+     * @return
+     */
     @PostMapping("requestCouponEvent")
-    public void requestCouponEvent(@Valid @RequestBody RequestCoupon request) {
-        couponProducer.sendCoupon(request);
+    public Boolean requestCouponEvent(@Valid @RequestBody RequestCoupon request) {
+        return couponProducer.sendCoupon(request);
     }
 
     // 用户删除优惠券
     @DeleteMapping("deleteCouponEvent")
-    public void deleteCouponEvent(@RequestParam("userId") Long userId,
+    public Boolean deleteCouponEvent(@RequestParam("userId") Long userId,
                                   @RequestParam("couponId") Long couponId) {
-        couponProducer.deleteCoupon(userId, couponId);
+       return  couponProducer.deleteCoupon(userId, couponId);
     }
 
 }

@@ -19,14 +19,16 @@ public class CouponProducer {
     private StreamBridge streamBridge ;
 
 
-    public void sendCoupon(RequestCoupon requestCoupon){
+    public Boolean sendCoupon(RequestCoupon requestCoupon){
         log.info("sendCoupon requestCoupon = {}" , JSONObject.toJSONString(requestCoupon));
         streamBridge.send(EventConstant.ADD_COUPON_EVENT,requestCoupon) ;
+        return Boolean.TRUE ;
     }
 
 
-    public void deleteCoupon(Long userId, Long couponId) {
+    public Boolean deleteCoupon(Long userId, Long couponId) {
         log.info("sent delete coupon event: userId={}, couponId={}", userId, couponId);
         streamBridge.send(EventConstant.DELETE_COUPON_EVENT, userId + "," + couponId);
+        return Boolean.TRUE;
     }
 }
