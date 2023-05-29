@@ -23,7 +23,7 @@ public class CouponConsumer {
     @Bean
     public Consumer<RequestCoupon> addCoupon(){
         return request -> {
-            log.info("received: {}", request);
+            log.info("addCoupon.......received: {}", request);
             customerService.requestCoupon(request);
         };
     }
@@ -33,7 +33,7 @@ public class CouponConsumer {
     public Consumer<RequestCoupon> addCouponDelay() {
         log.info("addCouponDelay.........");
         return request -> {
-            log.info("received: {}", request);
+            log.info("addCouponDelay......received: {}", request);
             customerService.requestCoupon(request);
         };
     }
