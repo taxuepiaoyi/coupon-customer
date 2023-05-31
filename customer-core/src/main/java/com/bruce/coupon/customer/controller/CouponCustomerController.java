@@ -10,6 +10,7 @@ import com.bruce.coupon.customer.domain.SearchCoupon;
 import com.bruce.coupon.customer.producer.CouponProducer;
 import com.bruce.coupon.customer.service.CouponCustomerService;
 import com.bruce.coupon.template.domain.CouponInfo;
+import io.seata.spring.annotation.GlobalTransactional;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -47,6 +48,7 @@ public class CouponCustomerController {
 
     // 用户删除优惠券
     @DeleteMapping("deleteCoupon")
+    @GlobalTransactional(name = "coupon-customer", rollbackFor = Exception.class)
     public void deleteCoupon(@RequestParam("userId") Long userId,
                              @RequestParam("couponId") Long couponId) {
         customerService.deleteCoupon(userId, couponId);

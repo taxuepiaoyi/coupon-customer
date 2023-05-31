@@ -3,6 +3,7 @@ package com.bruce.coupon.customer.feign;
 import com.bruce.coupon.customer.feign.fallback.TemplateServiceFallback;
 import com.bruce.coupon.template.domain.CouponTemplateInfo;
 import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -19,5 +20,9 @@ public interface TemplateService {
     // 批量获取
     @GetMapping("/getBatch")
     Map<Long, CouponTemplateInfo> getTemplateInBatch(@RequestParam("ids") Collection<Long> ids);
+
+    //删除优惠券模板
+    @DeleteMapping("/deleteCouponTemplate")
+    Boolean deleteCouponTemplate(@RequestParam("templateId") Long templateId) ;
 
 }

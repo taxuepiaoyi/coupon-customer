@@ -18,6 +18,9 @@ spring:
       hibernate.format_sql: true
     open-in-view: false
   cloud:
+    alibaba:
+      seata:
+        tx-service-group: seata-server-group
     nacos:
       discovery:
         # Nacos的服务注册地址，可以配置多个，逗号分隔
@@ -52,6 +55,21 @@ spring:
         watch:
           enabled: true
         watch-delay: 30000
+
+
+seata:
+  application-id: coupon-customer
+  registry:
+    type: nacos
+    nacos:
+      application: seata-server
+      server-addr: localhost:8848
+      namespace: dev
+      group: myGroup
+      cluster: default
+  service:
+    vgroup-mapping:
+      seata-server-group: default
 
 logging:
   level:

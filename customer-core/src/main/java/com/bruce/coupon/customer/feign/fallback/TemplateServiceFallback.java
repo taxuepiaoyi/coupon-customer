@@ -22,4 +22,10 @@ public class TemplateServiceFallback implements TemplateService {
         log.info("TemplateServiceFallback  getTemplateInBatch.....ids:{}........",ids);
         return null;
     }
+
+    @Override
+    public Boolean deleteCouponTemplate(Long templateId) {
+        log.info("TemplateServiceFallback  deleteCouponTemplate.....templateId:{}........",templateId);
+        return Boolean.FALSE;
+    }
 }
