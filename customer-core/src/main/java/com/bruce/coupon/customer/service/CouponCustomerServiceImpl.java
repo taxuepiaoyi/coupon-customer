@@ -20,6 +20,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.BooleanUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -31,6 +33,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Slf4j
+@RefreshScope
 @Service
 @Transactional
 public class CouponCustomerServiceImpl implements CouponCustomerService {
@@ -43,6 +46,9 @@ public class CouponCustomerServiceImpl implements CouponCustomerService {
 
     @Autowired
     private CalculationService calculationService ;
+
+    @Value("${seataExceptionFlag:false}")
+    private Boolean seataExceptionFlag ;
 
 
 
@@ -104,6 +110,9 @@ public class CouponCustomerServiceImpl implements CouponCustomerService {
     public void deleteCouponByCouponId(Long couponId) {
         templateService.deleteCouponTemplate(couponId) ;
         couponDao.deleteCouponInBatch(couponId,CouponStatus.INACTIVE);
+        if(seataExceptionFlag){
+            throw new RuntimeException("deleteCouponByCouponId  exception...") ;
+        }
     }
 
     @Override
