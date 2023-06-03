@@ -47,11 +47,10 @@ public class CouponCustomerController {
     }
 
     // 用户删除优惠券
-    @DeleteMapping("deleteCoupon")
+    @DeleteMapping("deleteCouponByCouponId")
     @GlobalTransactional(name = "coupon-customer", rollbackFor = Exception.class)
-    public void deleteCoupon(@RequestParam("userId") Long userId,
-                             @RequestParam("couponId") Long couponId) {
-        customerService.deleteCoupon(userId, couponId);
+    public void deleteCouponByCouponId(@RequestParam("couponId") Long couponId) {
+        customerService.deleteCouponByCouponId(couponId);
     }
 
     // 用户模拟计算每个优惠券的优惠价格

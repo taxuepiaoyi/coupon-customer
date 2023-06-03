@@ -94,7 +94,14 @@ public class CouponCustomerServiceImpl implements CouponCustomerService {
     @Transactional
     public void deleteCoupon(Long userId, Long couponId) {
        templateService.deleteCouponTemplate(couponId) ;
-       couponDao.deleteById(couponId);
+       couponDao.deleteById(userId);
+    }
+
+    @Override
+    @Transactional
+    public void deleteCouponByCouponId(Long couponId) {
+        templateService.deleteCouponTemplate(couponId) ;
+        couponDao.deleteCouponInBatch(couponId,CouponStatus.INACTIVE);
     }
 
     @Override

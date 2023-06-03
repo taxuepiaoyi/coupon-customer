@@ -65,7 +65,7 @@ seata:
       application: seata-server
       server-addr: localhost:8848
       namespace: dev
-      group: myGroup
+      group: DEFAULT_GROUP
       cluster: default
   service:
     vgroup-mapping:
