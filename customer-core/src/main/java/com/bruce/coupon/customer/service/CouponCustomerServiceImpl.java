@@ -26,6 +26,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.CollectionUtils;
 
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -83,6 +84,7 @@ public class CouponCustomerServiceImpl implements CouponCustomerService {
                 .shopId(templateInfo.getShopId())
                 .status(CouponStatus.AVAILABLE)
                 .templateInfo(templateInfo)
+                .createdTime(new Date())
                 .build();
         couponDao.save(coupon);
         CouponDTO couponDTO = CouponDTO.builder().build() ;
