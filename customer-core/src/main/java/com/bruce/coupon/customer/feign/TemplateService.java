@@ -25,4 +25,8 @@ public interface TemplateService {
     @DeleteMapping("/deleteCouponTemplate")
     Boolean deleteCouponTemplate(@RequestParam("templateId") Long templateId) ;
 
+    //删除优惠券模板
+    @DeleteMapping("/deleteCouponTemplateTCC")
+    Boolean deleteCouponTemplateTCC(@RequestParam("templateId") Long templateId) ;
+
 }

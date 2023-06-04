@@ -116,6 +116,15 @@ public class CouponCustomerServiceImpl implements CouponCustomerService {
     }
 
     @Override
+    public void deleteCouponByCouponIdTCC(Long couponId) {
+        templateService.deleteCouponTemplateTCC(couponId) ;
+        couponDao.deleteCouponInBatch(couponId,CouponStatus.INACTIVE);
+        if(seataExceptionFlag){
+            throw new RuntimeException("deleteCouponByCouponIdTCC  exception...") ;
+        }
+    }
+
+    @Override
     @Transactional
     public ShoppingCart placeOrder(ShoppingCart order) {
         if (CollectionUtils.isEmpty(order.getProducts())) {

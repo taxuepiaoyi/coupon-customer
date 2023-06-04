@@ -53,6 +53,12 @@ public class CouponCustomerController {
         customerService.deleteCouponByCouponId(couponId);
     }
 
+    @DeleteMapping("deleteCouponByCouponIdTCC")
+    @GlobalTransactional(name = "coupon-customer-tcc", rollbackFor = Exception.class)
+    public void deleteCouponByCouponIdTCC(@RequestParam("couponId") Long couponId) {
+        customerService.deleteCouponByCouponId(couponId);
+    }
+
     // 用户模拟计算每个优惠券的优惠价格
     @PostMapping("simulateOrder")
     public SimulationResponse simulate(@Valid @RequestBody SimulationOrder order) {

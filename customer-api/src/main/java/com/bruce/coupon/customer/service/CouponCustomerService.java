@@ -18,6 +18,8 @@ public interface CouponCustomerService {
 
     void deleteCouponByCouponId(Long couponId) ;
 
+    void deleteCouponByCouponIdTCC(Long couponId) ;
+
     // 核销优惠券
     ShoppingCart placeOrder(ShoppingCart info);
 
