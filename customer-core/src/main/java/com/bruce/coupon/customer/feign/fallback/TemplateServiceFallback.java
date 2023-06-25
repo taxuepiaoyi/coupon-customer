@@ -28,4 +28,9 @@ public class TemplateServiceFallback implements TemplateService {
         log.info("TemplateServiceFallback  deleteCouponTemplate.....templateId:{}........",templateId);
         return Boolean.FALSE;
     }
+
+    @Override
+    public Boolean deleteCouponTemplateTCC(Long templateId) {
+        return null;
+    }
 }
