@@ -22,7 +22,7 @@ import java.util.List;
 
 @Slf4j
 @RestController
-@RefreshScope
+@RefreshScope   // 实现配置热部署
 @RequestMapping("coupon-customer")
 public class CouponCustomerController {
 
